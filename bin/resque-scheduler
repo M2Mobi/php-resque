@@ -1,18 +1,8 @@
+#!/usr/bin/env php
 <?php
 
-// Look for an environment variable with 
-$RESQUE_PHP = getenv('RESQUE_PHP');
-if (!empty($RESQUE_PHP)) {
-	require_once $RESQUE_PHP;
-}
-// Otherwise, if we have no Resque then assume it is in the include path
-else if (!class_exists('Resque')) {
-	require_once 'Resque/Resque.php';
-}
-
-// Load resque-scheduler
-require_once dirname(__FILE__) . '/lib/ResqueScheduler.php';
-require_once dirname(__FILE__) . '/lib/ResqueScheduler/Worker.php';
+// Initialize Composer autoloader.
+require_once __DIR__ . '/autoload.php';
 
 $REDIS_BACKEND = getenv('REDIS_BACKEND');
 $REDIS_BACKEND_DB = getenv('REDIS_BACKEND_DB');
